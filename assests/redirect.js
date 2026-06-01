@@ -1,3 +1,3 @@
 setTimeout(function() {
-    window.location.href = "https://alouis02.github.io/AtomicGames/home.html";
+    window.location.href = "https://gamifex.online/";
 }, 5000); // 5 seconds
