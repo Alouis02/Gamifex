@@ -1,5 +1,4 @@
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,60 +13,53 @@
 
             videoLink.addEventListener('mouseenter', () => {
                 video.play();
-            });
-
-             
+            }); 
             videoLink.addEventListener('mouseleave', () => {
                 video.pause();
                 video.currentTime = 0;
             }); 
                 
         };
-
         // Function to handle toggle menu
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
             navLinks.classList.toggle('active');
         }
-
         // Function to go to a different page
         function goToPage(page) {
         window.location.href = page;
         }
     </script>
 </head>
-
 <body>
     <main>
         <header>
+            <!--Animation-->
             <section class="hero-animation">
                 <h1 style="color: white;">Gamifex</h1>
-                <p style="color: white;"></p>
+                <p style="color: rgb(255, 254, 254);"></p>
             </section>
         </header>
-        <hr />
         <article>
             <section>
-
                 <!--Jump-->
                 <div class="leftcolumn">
                     <div class="card">
-                        <h2>Home</h2>
-                        <a href="https://alouis02.itch.io/jump" class="video-link">
+                        <h2>Top Game</h2>
+                        <a href="https://gamifex.itch.io/jump" class="video-link">
                             <div class="hover-container">
                                 <video class="hover-video" src="images/ThumbnailJP.mp4" muted loop style="width:170px; height:170px;"></video>
                                 <div class="hover-text">Jump</div>
                             </div>
                         </a> 
                     </div>
-                </div>
-                
+                </div>               
                 <!--The Archer-->
                 <div class="rightcolumn">
                     <div class="card">
-                        <h3>Coming Soon!!</h3>
+                        <h3>Game Coming Soon!!</h3>
                         <div>
-                            <img src="images/TheArcher.jpg" alt="The Archer" style="width:250px; height:300px;">
+                            <img src="images/TheArcher.jpg" alt="The Archer" style="width:250px; height:200px;">
                         </div>
                     </div>
                 </div>
@@ -77,9 +69,6 @@
     <!--Navigation-->
     <nav>
         <menu>
-            <section class="logo">
-                <img src="images/GamifexLogo.jpg" alt="Icon" style="width: 70px; height: 40px; margin: auto; display: block;">
-            </section>
             <div class="hamburger" onclick="toggleMenu()">
                 <div class="line"></div>
                 <div class="line"></div>
@@ -91,11 +80,9 @@
             </ul>
         </menu>
     </nav>
-
     <!--Footer-->
     <footer>
         <p>&copy; 2026 Gamifex. All Rights Reserved.</p>
     </footer>
 </body>
-
 </html>
