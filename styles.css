@@ -1,17 +1,19 @@
 /* General body styling */
+/* NOTE: Sets the page background image, base font and default text color.
+   Keep margins/padding reset to avoid unexpected spacing from the browser. */
 body {
-    margin: 0;
-    padding: 0;
-    background: #1b1b2f; /* Dark background for gaming feel */
-    color: white;
-    font-family: Arial, sans-serif;
-    text-align: left;
-    min-height: 100%; /* Ensure body takes up full height */
-    display: flex;
-    flex-direction: column;
+  margin: 0;
+  padding: 0;
+  background: url("images/GamifexBG1.jpg");
+  color: white;
+  font-family: Arial, sans-serif;
+  background-position: center;
+  background-size: cover;
 }
 
 /* Hamburger menu */
+/* NOTE: Hidden on wide screens; displayed on small screens to toggle nav.
+   .hamburger is a flex column of three lines (bars). z-index keeps it above content. */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -20,6 +22,7 @@ body {
   z-index: 10;
 }
 
+/* NOTE: Individual bar styling for the hamburger icon. Smooth transition for animations. */
 .hamburger .line {
   width: 25px;
   height: 3px;
@@ -30,6 +33,8 @@ body {
 }
 
 /* Navigation links styling */
+/* NOTE: .nav-links is horizontal by default using flex; each link is padded and gets
+   a rounded hover background to improve discoverability. */
 .nav-links {
   list-style: none;
   display: flex;
@@ -44,11 +49,15 @@ body {
   transition: background 0.3s;
 }
 
+/* NOTE: Hover color for navigation links (accent color). */
 .nav-links li a:hover {
   background-color: #e94560;
 }
 
-/* Responsive */
+/* Responsive: mobile behavior */
+/* NOTE: At small viewports show the hamburger and hide the horizontal links.
+   .nav-links becomes an absolutely positioned vertical panel that toggles
+   when the .active class is applied by JS. */
 @media screen and (max-width: 768px) {
   .hamburger {
     display: flex;
@@ -66,6 +75,7 @@ body {
     z-index: 9;
   }
 
+  /* NOTE: Toggle class used by JS to show the menu on small screens. */
   .nav-links.active {
     display: flex;
   }
@@ -73,41 +83,56 @@ body {
 
 
 /* Navigation bar styling */
+/* NOTE: Fixed top navigation. Because it is fixed, add top padding to main content
+   in HTML to avoid overlap (e.g., body or main padding-top equal to nav height). */
 nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #151E3D; /* Dark blue navigation bar */
-    padding: 5px;
-    position: fixed;
-    top: 0;
-    width: 100%; /* Set width to 100% to avoid overflow */
-    box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #151E3D; /* Dark blue navigation bar */
+  padding: 5px;
+  position: fixed;
+  top: 0;
+  width: 100%; /* Set width to 100% to avoid overflow */
+  box-sizing: border-box;
 }
 
 /* Navigation buttons */
+/* NOTE: Rounded pill-style buttons used in nav where needed (calls-to-action). */
 nav button {
-    background: #1b1b2f;
-    color: white;
-    margin: 0 2px;
-    padding: 6px 20px;
-    border: none;
-    border-radius: 100px;
-    cursor: pointer;
-    transition: background 0.3s;
+  background: #1b1b2f;
+  color: white;
+  margin: 0 2px;
+  padding: 6px 20px;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
 nav button:hover {
-    background: #e94560;
+  background: #e94560;
 }
 
 /* Header styling */
+/* NOTE: Large page header block with centered content. Padding provides breathing room. */
 header {
-    text-align: center;
-    padding: 60px 20px;
-    background: #0f3460;
+  text-align: center;
+  padding: 60px 20px;
+  animation: backChange 5s infinite;
 }
 
+@keyframes backChange {
+  0% {background-color: rgb(18, 8, 105);}
+  25% {background-color: rgb(58, 8, 105);}
+  50% {background-color: rgb(82, 8, 105);}
+  75% {background-color: rgb(89, 8, 105);}
+  100% {background-color: rgb(105, 8, 89);}
+}
+
+/* Animation for hero elements */
+/* NOTE: fadeSlideUp animates opacity and vertical position to create a subtle
+   floating/entrance effect. Consider respecting prefers-reduced-motion for a11y. */
 @keyframes fadeSlideUp {
   0% {
     opacity: 0;
@@ -128,85 +153,76 @@ section.hero-animation {
 }
 
 header h1 {
-    font-size: 2em;
-    margin: 1;
+  font-size: 2em;
+  margin: 1;
 }
 
 /* Styling for horizontal rule */
+/* NOTE: Decorative HR with a double-top border. hr::after can be used to
+   create a centered 'cut-out' effect — check cross-browser rendering. */
 hr {
-    border: none;
-    border-top: 3px double #333;
-    color: #333;
-    overflow: visible;
-    text-align: center;
-    height: 5px;
+  border: none;
+  border-top: 3px double #333;
+  color: #333;
+  overflow: visible;
+  text-align: center;
+  height: 5px;
 }
 
 hr::after {
-    background: #1b1b2f;
-    padding: 0 4px;
-    position: relative;
-    top: -13px;
+  background: #291b2f;
+  padding: 0 4px;
+  position: relative;
+  top: -13px;
 }
 
 /* Menu styling */
+/* NOTE: Using the <menu> element as a flex container for top-level nav items.
+   If you prefer wider semantic support, use a <ul> inside a <nav>. */
 menu {
-    list-style-type: none;
-    display: flex;
-    padding: 0;
-    margin-bottom: 0;
-    gap: 1em;
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  margin-bottom: 0;
+  gap: 1em;
 }
 
 /* Main content area styling */
+/* NOTE: min-height: 200vh intentionally makes the page tall for demonstration.
+   Adjust to auto or a sensible value for production. */
 main {
-    min-height: 200vh;
-    padding: 20px;
+  min-height: 200vh;
+  padding: 20px;
 }
 
 /* Game grid layout */
+/* NOTE: Responsive grid that adapts the number of columns based on available space. */
 .game-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
 /* Game card styling */
+/* NOTE: Cards have a subtle scale-up on hover to feel interactive. Consider
+   using transform-origin if you want a specific pivot point. */
 .game-card {
-    background: #16213e;
-    padding: 30px;
-    text-align: center;
-    border-radius: 12px;
-    transition: transform 0.2s;
+  background: #16213e;
+  padding: 30px;
+  text-align: center;
+  border-radius: 12px;
+  transition: transform 0.2s;
 }
 
 .game-card:hover {
-    transform: scale(1.05);
-    background: #e94560;
+  transform: scale(1.05);
+  background: #e94560;
 }
-
-.game-flex-row {
-  display: flex;
-  gap: 40px;
-  justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap; /* optional for responsiveness */
-}
-
-.leftcolumn .card {
-  display: left;
-  flex-direction: left;
-  align-items: left;
-  text-align: left;
-}
-
-.leftcolumn h3 {
-  color: white;
-}
-
 
 /* Footer styling */
+/* NOTE: Footer cycles through colors using an animation. For accessibility
+   allow users to opt out via prefers-reduced-motion. */
 footer {
     display: flex;
     justify-content: center;
@@ -219,112 +235,115 @@ footer {
 }
 
 @keyframes colorChange {
-  0% {background-color: Turquoise;}
-  25% {background-color: DeepSkyBlue;}
-  50% {background-color: RoyalBlue;}
-  75% {background-color: Navy;}
-  100% {background-color: MidnightBlue;}
+  0% {background-color: rgb(18, 8, 105);}
+  25% {background-color: rgb(58, 8, 105);}
+  50% {background-color: rgb(82, 8, 105);}
+  75% {background-color: rgb(89, 8, 105);}
+  100% {background-color: rgb(105, 8, 89);}
 }
 
 /* Generic box sizing */
+/* NOTE: Make box-sizing consistent so padding/border are included in width/height calculations. */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* Header/Blog Title */
+/* NOTE: .header is a utility block that can be used for blog or section titles. */
 .header {
-    padding: 30px;
-    text-align: center;
-    background: #1b1b2f;
+  padding: 30px;
+  text-align: center;
+  background: #1b1b2f;
 }
 
 .header h1 {
-    font-size: 50px;
+  font-size: 50px;
 }
 
 /* Top navigation bar */
+/* NOTE: Legacy .topnav styles using floats — consider migrating to flexbox for
+   easier alignment and responsive behavior. */
 .topnav {
-    overflow: hidden;
-    background-color: #333;
+  overflow: hidden;
+  background-color: #333;
 }
 
 .topnav a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
 .topnav a:hover {
-    background-color: #ddd;
-    color: black;
+  background-color: #ddd;
+  color: black;
 }
 
 /* Layout columns */
+/* NOTE: Two-column float layout. leftcolumn and rightcolumn widths are
+   complementary; floats require a clearing mechanism (see .row::after). */
 .leftcolumn, .rightcolumn {
-    float: left;
-    width: 75%;
+  float: left;
+  width: 75%;
 }
 
 .rightcolumn {
-    width: 25%;
-    background: #1b1b2f;
-    padding-left: 20px;
+  width: 25%;
+  padding-left: 20px;
 }
 
 /* Card effect */
+/* NOTE: Generic card container used across the site for grouping content. */
 .card {
-    background: #1b1b2f;
-    padding: 20px;
-    margin-top: 20px;
+  padding: 20px;
+  margin-top: 20px;
 }
 
 /* Clear floats after the columns */
+/* NOTE: Classic clearfix to clear floated columns inside a .row wrapper. */
 .row::after {
-    content: "";
-    display: table;
-    clear: both;
+  content: "";
+  display: table;
+  clear: both;
 }
 
 /* Responsive layout */
+/* NOTE: Collapse float columns to full-width on narrow screens. */
 @media screen and (max-width: 800px) {
-    .leftcolumn, .rightcolumn {
-        width: 100%;
-        padding: 0;
-    }
+  .leftcolumn, .rightcolumn {
+    width: 100%;
+    padding: 0;
+  }
 }
 
 @media screen and (max-width: 400px) {
-    .topnav a {
-        float: none;
-        width: 100%;
-    }
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
 }
 
 .card img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
 
 /* Logo styling */
+/* NOTE: The .logo class centers logo content; it can contain an image and text. */
 .logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo img {
-    width: 50px;
-    height: 50px;
-    margin-right: 15px;
-}
-
-.logo h1 {
-  font-size: 24px;
-  background-color: #1b1b2f;
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
 }
 
 .follow-button {      
@@ -335,6 +354,9 @@ footer {
   border-radius: 5px;
 }
 
+/* Social follow buttons */
+/* NOTE: Small pill-shaped buttons for social links. Keep padding consistent
+   so icons align visually. */
 .linkedin {
   background-color: #1DA1F2;
   margin: 0 2px;
@@ -345,7 +367,6 @@ footer {
   transition: background 0.3s;
   display: flex;
 }
-
 .gmail {
   background-color: #E1306C;
   margin: 0 2px;
@@ -356,7 +377,6 @@ footer {
   transition: background 0.3s;
   display: flex;
 }
-
 .github {
   background-color: #812ac9;
   margin: 0 2px;
@@ -372,6 +392,10 @@ footer {
   margin-right: 5px;
 }
 
+
+/* Video thumbnail link */
+/* NOTE: Fixed thumbnail dimensions can be overridden by responsive rules.
+   pointer-events:none on the video prevents accidental drag/play when clicking the link. */
 .video-link {
   display: inline-block;
   width: 300px;
@@ -389,6 +413,9 @@ footer {
   border-radius: 8px;
 }
 
+/* Hover overlay container */
+/* NOTE: .hover-container positions .hover-text over the media. The text fades in on hover.
+   pointer-events:none on overlay elements keeps clicks targeting the link beneath. */
 .hover-container {
   position: relative;
   display: inline-block;
@@ -404,425 +431,7 @@ footer {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 10px 15px;
-  border-radius: 8px;
-  font-size: 18px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.hover-container:hover .hover-text {
-  opacity: 1;
-}/* General body styling */
-body {
-    margin: 0;
-    padding: 0;
-    background: #1b1b2f; /* Dark background for gaming feel */
-    color: white;
-    font-family: Arial, sans-serif;
-    text-align: left;
-    min-height: 100%; /* Ensure body takes up full height */
-    display: flex;
-    flex-direction: column;
-}
-
-/* Hamburger menu */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  padding: 10px;
-  z-index: 10;
-}
-
-.hamburger .line {
-  width: 25px;
-  height: 3px;
-  background: white;
-  margin: 4px 0;
-  border-radius: 2px;
-  transition: 0.3s ease;
-}
-
-/* Navigation links styling */
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 10px;
-}
-
-.nav-links li a {
-  color: white;
-  text-decoration: none;
-  padding: 8px 16px;
-  border-radius: 8px;
-  transition: background 0.3s;
-}
-
-.nav-links li a:hover {
-  background-color: #e94560;
-}
-
-/* Responsive */
-@media screen and (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    background: #0f3460;
-    padding: 20px;
-    border-radius: 10px;
-    z-index: 9;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-}
-
-
-/* Navigation bar styling */
-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #151E3D; /* Dark blue navigation bar */
-    padding: 5px;
-    position: fixed;
-    top: 0;
-    width: 100%; /* Set width to 100% to avoid overflow */
-    box-sizing: border-box;
-}
-
-/* Navigation buttons */
-nav button {
-    background: #1b1b2f;
-    color: white;
-    margin: 0 2px;
-    padding: 6px 20px;
-    border: none;
-    border-radius: 100px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-nav button:hover {
-    background: #e94560;
-}
-
-/* Header styling */
-header {
-    text-align: center;
-    padding: 60px 20px;
-    background: #0f3460;
-}
-
-@keyframes fadeSlideUp {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  50% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-}
-
-section.hero-animation {
-  animation: fadeSlideUp 3s ease-in-out infinite;
-}
-
-header h1 {
-    font-size: 2em;
-    margin: 1;
-}
-
-/* Styling for horizontal rule */
-hr {
-    border: none;
-    border-top: 3px double #333;
-    color: #333;
-    overflow: visible;
-    text-align: center;
-    height: 5px;
-}
-
-hr::after {
-    background: #1b1b2f;
-    padding: 0 4px;
-    position: relative;
-    top: -13px;
-}
-
-/* Menu styling */
-menu {
-    list-style-type: none;
-    display: flex;
-    padding: 0;
-    margin-bottom: 0;
-    gap: 1em;
-}
-
-/* Main content area styling */
-main {
-    min-height: 200vh;
-    padding: 20px;
-}
-
-/* Game grid layout */
-.game-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
-
-/* Game card styling */
-.game-card {
-    background: #16213e;
-    padding: 30px;
-    text-align: center;
-    border-radius: 12px;
-    transition: transform 0.2s;
-}
-
-.game-card:hover {
-    transform: scale(1.05);
-    background: #e94560;
-}
-
-.game-flex-row {
-  display: flex;
-  gap: 40px;
-  justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap; /* optional for responsiveness */
-}
-
-.leftcolumn .card {
-  display: left;
-  flex-direction: left;
-  align-items: left;
-  text-align: left;
-}
-
-.leftcolumn h3 {
-  color: white;
-}
-
-
-/* Footer styling */
-footer {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
-    background: #1b1b2f;
-    color: white;
-    margin-top: auto;
-    animation: colorChange 5s infinite;
-}
-
-@keyframes colorChange {
-  0% {background-color: Turquoise;}
-  25% {background-color: DeepSkyBlue;}
-  50% {background-color: RoyalBlue;}
-  75% {background-color: Navy;}
-  100% {background-color: MidnightBlue;}
-}
-
-/* Generic box sizing */
-* {
-    box-sizing: border-box;
-}
-
-/* Header/Blog Title */
-.header {
-    padding: 30px;
-    text-align: center;
-    background: #1b1b2f;
-}
-
-.header h1 {
-    font-size: 50px;
-}
-
-/* Top navigation bar */
-.topnav {
-    overflow: hidden;
-    background-color: #333;
-}
-
-.topnav a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-.topnav a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-/* Layout columns */
-.leftcolumn, .rightcolumn {
-    float: left;
-    width: 75%;
-}
-
-.rightcolumn {
-    width: 25%;
-    background: #1b1b2f;
-    padding-left: 20px;
-}
-
-/* Card effect */
-.card {
-    background: #1b1b2f;
-    padding: 20px;
-    margin-top: 20px;
-}
-
-/* Clear floats after the columns */
-.row::after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-/* Responsive layout */
-@media screen and (max-width: 800px) {
-    .leftcolumn, .rightcolumn {
-        width: 100%;
-        padding: 0;
-    }
-}
-
-@media screen and (max-width: 400px) {
-    .topnav a {
-        float: none;
-        width: 100%;
-    }
-}
-
-.card img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-/* Logo styling */
-.logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.logo img {
-    width: 50px;
-    height: 50px;
-    margin-right: 15px;
-}
-
-.logo h1 {
-  font-size: 24px;
-  background-color: #1b1b2f;
-}
-
-.follow-button {      
-  display: inline-block;
-  padding: 10px 20px;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.linkedin {
-  background-color: #1DA1F2;
-  margin: 0 2px;
-  padding: 8px 25px;
-  border: none;
-  border-radius: 80px;
-  cursor: pointer;
-  transition: background 0.3s;
-  display: flex;
-}
-
-.gmail {
-  background-color: #E1306C;
-  margin: 0 2px;
-  padding: 8px 25px;
-  border: none;
-  border-radius: 80px;
-  cursor: pointer;
-  transition: background 0.3s;
-  display: flex;
-}
-
-.github {
-  background-color: #812ac9;
-  margin: 0 2px;
-  padding: 8px 25px;
-  border: none;
-  border-radius: 80px;
-  cursor: pointer;
-  transition: background 0.3s;
-  display: flex;
-}
-        
-.follow-button i {         
-  margin-right: 5px;
-}
-
-.video-link {
-  display: inline-block;
-  width: 300px;
-  height: 170px;
-  overflow: hidden;
-  text-decoration: none;
-  border-radius: 8px;
-}
-
-.video-link video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none; 
-  border-radius: 8px;
-}
-
-.hover-container {
-  position: relative;
-  display: inline-block;
-}
-
-.hover-video {
-  width: 300px;
-  height: auto;
-}
-
-.hover-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
+  color: rgb(255, 255, 255);
   background-color: rgba(0, 0, 0, 0.6);
   padding: 10px 15px;
   border-radius: 8px;

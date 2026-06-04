@@ -12,7 +12,6 @@
             const navLinks = document.querySelector('.nav-links');
             navLinks.classList.toggle('active');
         }
-        
         // Function to go to a different page
         function goToPage(page) {
         window.location.href = page;
@@ -22,6 +21,7 @@
 <body>
     <main>
       <header>
+        <!--Animation-->
         <section class="hero-animation">
                 <h1 style="color: white;">Gamifex</h1>
                 <p style="color: rgb(255, 254, 254);"></p>
@@ -35,16 +35,19 @@
                         <div class="img-container">
                             <img src="images/aboutme.jpg" alt="AboutMe" style="width:300px;height:300px;">
                         </div>
-                        <h2 style="color: white;">So, who am I?</h2>
+                        <h2 style="color: rgb(255, 255, 255);">So, who am I?</h2>
                         <body>
                             <p>
-                                My name is Alex Louis, and I am a passionate game developer with a love for creating immersive gaming experiences. With a background in computer science and a deep understanding of game design principles, I have been honing my skills in game development for several years. I am dedicated to pushing the boundaries of interactive entertainment and bringing innovative ideas to life through my work. Whether it's crafting captivating storylines, designing engaging gameplay mechanics, or implementing stunning visuals, I strive to create games that captivate players and leave a lasting impression.
+                                My name is Alex Louis, and I am a passionate game developer with a love for creating immersive gaming experiences. 
+                                With a background in computer science and a deep understanding of game design principles, 
+                                I have been honing my skills in game development for several years. I am dedicated to pushing the boundaries of 
+                                interactive entertainment and bringing innovative ideas to life through my work. Whether it's crafting captivating storylines, 
+                                designing engaging gameplay mechanics, or implementing stunning visuals, I strive to create games that captivate players and leave a lasting impression.
                             </p>
                         </body>
                     </article>
                 </div>
             </div>
-
             <!--Social-->
             <div class="rightcolumn">
                 <div class="card">
@@ -69,9 +72,6 @@
     <!--Navigation-->
     <nav>
         <menu>
-            <section class="logo">
-                <img src="images/GamifexLogo.jpg" alt="Icon" style="width: 70px; height: 40px; margin: auto; display: block;">
-            </section>
             <div class="hamburger" onclick="toggleMenu()">
                 <div class="line"></div>
                 <div class="line"></div>
